@@ -1,0 +1,44 @@
+*** Settings ***
+Resource       resource.txt
+
+
+*** Test Cases ***
+
+Đăng nhập
+    Đăng nhập vào hệ thống
+    Điền tài khoản   linhat
+    Điền mật khẩu    lupbrant281
+    Bấm nút đăng nhập
+
+Thêm thành công sinh viên
+	Thêm thành công  Đặng  Tiến Linh  07/10/1992  0978290692  Nam  Kinh  Hà Nội  Đặng Hữu Tân  Nguyễn Thị Khanh  Vĩnh Phúc  
+	
+*** Keywords ***
+
+Ấn nút thêm
+	Click Button		 add-student-submit
+
+Lựa chọn option
+	Click Element    student-list-menu
+
+Ấn nút thêm sinh viên
+	Click link 		 add-student
+
+Thêm thành công  [Arguments]  ${ho}  ${ten}  ${birthday}  ${phone}  ${sex}  ${dantoc}  ${address}  ${hotenbo}  ${hotenme}  ${noisinh}  			
+	Chọn xem danh sách lớp	            1643	
+	Lựa chọn option
+	Ấn nút thêm sinh viên
+	Nhập họ                 	${ho}
+	Nhập tên             		${ten}
+	Nhập số điện thoại          ${phone}
+	Chọn giới tính              ${sex}
+	Ngày sinh		            ${birthday}
+	Dân tộc                     ${dantoc}
+	Địa chỉ                     ${address}
+	Họ tên bố					${hotenbo}
+	Họ tên mẹ					${hotenme}
+	Nơi sinh					${noisinh}
+	Ấn nút thêm
+	Set Selenium Speed  0.5		
+	Element Should Be Visible   notify
+	Element Should Contain  notify  Bạn vừa thêm 1 học sinh

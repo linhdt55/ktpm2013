@@ -1,0 +1,12 @@
+*** Settings ***
+Resource       resource.txt
+
+
+*** Test Cases ***
+
+Đăng nhập
+    Đăng nhập vào hệ thống
+    Điền tài khoản  linhat
+    Điền mật khẩu   lupbrant281
+    Bấm nút đăng nhập
+    Bấm nút đăng suất
